@@ -1,0 +1,141 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            /* background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg'); */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            padding-right: 40px;
+            width: 320px;
+        }
+        .login-container h2 {
+            text-align: center;
+        }
+        .login-form {
+            margin-top: 20px;
+        }
+        .login-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .login-form input[type="password"],
+        .login-form input[type="text"],
+        .login-form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-form button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .login-form button:hover {
+            background-color: #0056b3;
+        }
+    .radio{
+        display: flex;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .radio {
+        display: flex;
+        align-items: center;
+    }
+
+    .radio[type="radio"] + label {
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+        margin-left: 5px;
+    }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form class="login-form" action="/login" method="post" onsubmit="return validateForm()">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            <label for="password">Password:</label>
+            <input type="checkbox" id="showPassword"> Show Password
+            <p class="Error"> <%= locals.message %></p>
+            <div class="radio">
+                <input type="radio" id="userType" name="userType" value="admin">
+                <label for="adminRadio">Admin</label>   
+                <input type="radio" id="userType" name="userType" value="user">
+                <label for="userRadio">User</label>
+            </div>
+            <button type="submit">Login</button>
+            <br>
+            <br>
+            <a href="/forgot" style="text-decoration: none; background-color: #d9004c; color: #fff; padding: 2px 6px; border-radius: 5px; text-align: center; display: inline-block;">Forgot password</a>
+            <br>
+            <br>
+            <a href="/register" style="text-decoration: none; background-color: #0074d9; color: #fff; padding: 6px 12px; border-radius: 5px; text-align: center; display: inline-block;">Create an account</a>
+        </form>
+        
+    </div>
+    <script>
+        const passwordInput = document.getElementById("password");
+        const showPasswordCheckbox = document.getElementById("showPassword");
+
+        showPasswordCheckbox.addEventListener("change", function () {
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = "text"; // Change input type to "text" to show the password
+            } else {
+                passwordInput.type = "password"; // Change input type back to "password" to hide the password
+            }
+        });
+        function validateForm() {
+            // Get the values of the form fields
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+        
+            // Check if any of the required fields are empty
+            if (name === '' || email === '' || password === '') {
+                // Display a pop-up alert
+                alert("Please fill in all required fields.");
+                return false; // Prevent form submission
+            }
+        
+            // If all fields are filled, allow form submission
+            return true;
+        }
+    </script>
+</body>
+</html>

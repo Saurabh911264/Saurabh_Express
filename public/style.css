@@ -1,0 +1,14 @@
+/* CSS for styling the "Hello, World!" text */
+body {
+    background-color: #5a7486;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    padding: 100px;
+    margin: 0;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}

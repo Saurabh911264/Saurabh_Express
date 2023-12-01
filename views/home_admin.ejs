@@ -1,0 +1,26 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations Homepage</title>
+    <link rel="stylesheet" href="style_2.css">
+</head>
+<body>
+    <h2>Hello <%=locals.name%></h2>
+    <nav>
+        <ul>
+            <li><a href="/create">Create</a></li>
+            <li><a href="/display">Read</a></li>
+            <li><a href="/update">Update</a></li>
+            <li><a href="/delete">Delete</a></li>
+            <li><a href="/" class="logout-button">Logout</a></li>
+        </ul>
+    </nav>
+    <section class="main-content">
+        <p>This is the homepage for CRUD operations. Use the navigation links above to perform various CRUD actions.</p>
+    </section>
+</body>
+</html>

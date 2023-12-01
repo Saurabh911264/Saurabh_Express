@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .search-bar {
+            margin: 20px;
+        }
+        .delete-button {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Data</h1>
+
+    <div class="search-bar">
+        <label for="search">Search: </label>
+        <input type="text" id="search" oninput="searchTable()" placeholder="Enter a name">
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>User Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(function(user) { %>
+                <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.userType %></td>
+                    <td>
+                        <button class="delete-button" data-userid="<%= user._id %>" onclick="deleteUserData('<%= user._id %>')">Delete</button>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <script>
+        function searchTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.querySelector("table");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0]; // Search based on the first column (Name)
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function confirmDelete(userName) {
+            
+        }
+        function deleteUserData(userId) { 
+        fetch(`/index/${email}`, {
+            method: "DELETE",
+        })
+            .then((response) => {
+                if (response.status === 200) {
+                    alert("User deleted successfully");
+                    // Remove the user's row from the table
+                    const row = document.querySelector(`[data-userid="${email}"]`);
+                    if (row) {
+                        row.remove();
+                    }
+                } else {
+                    alert("Failed to delete user");
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    
+}
+
+    </script>
+</body>
+</html>

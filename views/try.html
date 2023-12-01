@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9; /* Light gray background for the entire page */
+            background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0),
+                              linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0);
+            background-size: 40px 40px;
+        }
+
+        #dashboard {
+            width: 60%;
+            margin: 20px auto;
+            background-color: #ffffff; /* White background for the main content */
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        #admin-options {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #4caf50; /* Green background for admin options */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            color: #fff; /* White text color */
+        }
+
+        #admin-options h3 {
+            margin: 0;
+            cursor: pointer;
+        }
+
+        #admin-data {
+            display: none;
+            margin-top: 10px;
+        }
+
+        #dashboard h1 {
+            margin: 10px 0; /* Adjusted margin for the welcome line */
+            color: #333; /* Dark gray text color */
+        }
+
+        #dashboard p {
+            color: #555; /* Slightly lighter gray text color */
+        }
+    </style>
+</head>
+<body>
+
+<div id="dashboard">
+    <h1>Welcome to Barber Dashboard</h1>
+    <p>Explore the latest trends and manage your barber business efficiently.</p>
+    <!-- Your additional dashboard content goes here -->
+
+    <div id="admin-options">
+        <h3 onclick="toggleAdminData()">Admin Options</h3>
+        <div id="admin-data">
+            <a href="#admin-data1">Admin Data 1</a>
+            <a href="#admin-data2">Admin Data 2</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleAdminData() {
+        var adminData = document.getElementById("admin-data");
+        adminData.style.display = (adminData.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>
